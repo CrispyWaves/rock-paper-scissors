@@ -3,6 +3,7 @@ let computerSelection;
 
 console.log("Welcome to Rock, Paper, Scissors");
 
+//pick a random option for the computer and return as string
 function computerPlay() {
     let numberMove, textMove;
 
@@ -16,14 +17,13 @@ function computerPlay() {
         textMove = "scissors"
     }
     return textMove;
-
 }
 
 //Simulate one round of rps
 //Accepts player pick and computer pick, evaluates who wins
 //returns string saying who won
 function playRound (player, computer){
-    console.log(player+" "+computer);
+    console.log("You chose "+player+" and the computer chose "+computer);
     player = player.toLowerCase();
     computer = computer.toLowerCase();
 
@@ -31,32 +31,43 @@ function playRound (player, computer){
         if (computer == "rock"){
             return "Tie game!";
         } else if (computer == "paper"){
-            return "You lose. Paper beats rock.";
+            return "You lose. Paper beats rock!";
         } else {
-            return "You win. Rock beats scissors";
+            return "You win. Rock beats scissors!";
         }
     } else if (player == "paper"){
         if (computer == "rock"){
-            return "You win. Paper beats rock";
+            return "You win. Paper beats rock!";
         } else if (computer == "paper"){
             return "Tie game!";
         } else {
-            return "You lose. Scissors beats paper";
+            return "You lose. Scissors beats paper!";
         }
     } else {
         if (computer == "rock"){
-            return "You lose. Rock beats scissors";
+            return "You lose. Rock beats scissors!";
         } else if (computer == "paper"){
-            return "You win. Scissors beats paper";
+            return "You win. Scissors beats paper!";
         } else {
             return "Tie game!";
         }
     }
 }
+//runs five games of rps
+function game(){
+    for (let i = 1; i <= 5; i++){
+        //determine moves of both players
+        computerSelection = computerPlay();
+        playerSelection = "rock";
+        console.log("Round "+i+". "+playRound(playerSelection,computerSelection));
+    }
+    return;
+}
 
+game();
 //determine moves of both players
-computerSelection = computerPlay();
-playerSelection = "rock";
+/* computerSelection = computerPlay();
+playerSelection = "rock"; */
 
 //play round of rps
-console.log(playRound(playerSelection, computerSelection));
+// console.log(playRound(playerSelection, computerSelection));

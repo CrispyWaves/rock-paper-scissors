@@ -1,5 +1,7 @@
 let playerSelection;
 let computerSelection;
+let playerWins = 0;
+let computerWins = 0;
 
 console.log("Welcome to Rock, Paper, Scissors");
 
@@ -29,17 +31,19 @@ function playRound (player, computer){
 
     if (player == "rock"){
         if (computer == "rock"){
-            return "Tie game!";
+            return "Tie round!";
         } else if (computer == "paper"){
+            computerWins++;
             return "You lose. Paper beats rock!";
         } else {
+            playerWins++;
             return "You win. Rock beats scissors!";
         }
     } else if (player == "paper"){
         if (computer == "rock"){
             return "You win. Paper beats rock!";
         } else if (computer == "paper"){
-            return "Tie game!";
+            return "Tie round!";
         } else {
             return "You lose. Scissors beats paper!";
         }
@@ -49,18 +53,33 @@ function playRound (player, computer){
         } else if (computer == "paper"){
             return "You win. Scissors beats paper!";
         } else {
-            return "Tie game!";
+            return "Tie round!";
         }
     }
 }
+
+function determineWins(playerScore,computerScore){
+    console.log("Player won "+playerScore+" rounds and computer won "+computerScore+" round");
+    if(playerScore>computerScore){
+        console.log("Player wins!");
+    } else if(playerScore<computerScore){
+        console.log("Computer wins!");
+    } else {
+        console.log("Tie game!");
+    }
+}
+
 //runs five games of rps
 function game(){
+    
     for (let i = 1; i <= 5; i++){
         //determine moves of both players
         computerSelection = computerPlay();
         playerSelection = "rock";
         console.log("Round "+i+". "+playRound(playerSelection,computerSelection));
     }
+    determineWins(playerWins,computerWins);
+    console.log(playerWins +" "+computerWins);
     return;
 }
 

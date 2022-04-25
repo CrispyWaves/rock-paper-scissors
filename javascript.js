@@ -41,16 +41,20 @@ function playRound (player, computer){
         }
     } else if (player == "paper"){
         if (computer == "rock"){
+            playerWins++;
             return "You win. Paper beats rock!";
         } else if (computer == "paper"){
             return "Tie round!";
         } else {
+            computerWins++;
             return "You lose. Scissors beats paper!";
         }
     } else {
         if (computer == "rock"){
+            computerWins++;
             return "You lose. Rock beats scissors!";
         } else if (computer == "paper"){
+            playerWins++;
             return "You win. Scissors beats paper!";
         } else {
             return "Tie round!";
@@ -75,18 +79,12 @@ function game(){
     for (let i = 1; i <= 5; i++){
         //determine moves of both players
         computerSelection = computerPlay();
-        playerSelection = "rock";
+        playerSelection = prompt("What is your move?");
         console.log("Round "+i+". "+playRound(playerSelection,computerSelection));
     }
     determineWins(playerWins,computerWins);
-    console.log(playerWins +" "+computerWins);
     return;
 }
 
+//Run a five round game of rps
 game();
-//determine moves of both players
-/* computerSelection = computerPlay();
-playerSelection = "rock"; */
-
-//play round of rps
-// console.log(playRound(playerSelection, computerSelection));
